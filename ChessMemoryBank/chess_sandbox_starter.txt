@@ -1,0 +1,32 @@
+CHESS SANDBOX STARTER KIT (for fresh chat sessions)
+--------------------------------------------------
+
+Standard Starting Board (snapshot format)
+-----------------------------------------
+8 | r n b q k b n r
+7 | p p p p p p p p
+6 | . . . . . . . .
+5 | . . . . . . . .
+4 | . . . . . . . .
+3 | . . . . . . . .
+2 | P P P P P P P P
+1 | R N B Q K B N R
+    a b c d e f g h
+
+Legend:
+- Uppercase = White pieces: P N B R Q K
+- Lowercase = Black pieces: p n b r q k
+- '.' = empty square
+
+How to Play in a Fresh Chat
+---------------------------
+1. Say: "Let's play chess."
+2. Make your move in from→to format, e.g.:
+   - Pawn e2 → e4
+   - Knight g1 → f3
+3. I will update my internal "motherboard" silently.
+4. I will keep a move log in algebraic notation (e.g. 1. e4 e5).
+5. I will only show you the board if you ask for a "snapshot".
+
+That’s all you need to start a clean game!
+
