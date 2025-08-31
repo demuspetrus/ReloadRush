@@ -1,0 +1,116 @@
+GENERAL MEMORY BANK STARTER KIT (for fresh chat sessions)
+---------------------------------------------------------
+
+Goal
+----
+Keep one shared state with simple, logged updates. Works for drafts, tasks,
+research notes, budgets, study logs, and more. Paste this file into a new chat
+and say: "Use this Memory Bank."
+
+
+Snapshot format
+---------------
+Blocks define the current state. Keep it plain text.
+
+[Project]
+title = Example Project
+owner = You
+status = planning
+
+[Tasks]
+todo = ["set scope", "collect sources"]
+doing = []
+done = []
+
+[Notes]
+draft = <<
+This is the working draft.
+Use short lines. Keep edits small.
+>>
+
+
+Chat commands (you type these)
+------------------------------
+SNAPSHOT
+  Show the current state.
+
+LOG
+  Show the change log.
+
+SET <Block.key> = <value>
+  Example: SET Project.status = in-progress
+
+APPEND <Block.key> += <item>
+  Example: APPEND Tasks.todo += "write outline"
+
+MOVE <from_list> -> <to_list> : "<item>"
+  Example: MOVE Tasks.todo -> Tasks.doing : "collect sources"
+
+REPLACE <Block.key> : "old" -> "new"
+  Example: REPLACE Notes.draft : "working" -> "living"
+
+REMOVE <Block.key>
+  Example: REMOVE Project.owner
+
+EDIT <Block.key> = << ... >>
+  Replace a whole text block.
+  Example:
+    EDIT Notes.draft = <<
+    New draft line 1.
+    New draft line 2.
+    >>
+
+CHECKPOINT "<name>"
+  Save a named checkpoint of the whole state.
+
+REVERT "<name>"
+  Go back to a checkpoint.
+
+STAMP
+  Add a timestamped note to the log.
+
+HELP
+  Show this command list.
+
+
+Examples you can try
+--------------------
+1) Tasks flow
+   APPEND Tasks.todo += "prepare figures"
+   MOVE Tasks.todo -> Tasks.doing : "set scope"
+   MOVE Tasks.doing -> Tasks.done  : "set scope"
+
+2) Draft edit
+   REPLACE Notes.draft : "working" -> "living"
+   EDIT Notes.draft = <<
+   Intro:
+   - Why this matters
+   - What we will do
+   >>
+
+3) Budget
+   SET Budget.month = "2025-09"
+   SET Budget.items = [{"name":"books","eur":18},{"name":"coffee","eur":6}]
+
+4) Study log
+   SET Study.topic = "Unity basics"
+   APPEND Study.sessions += {"date":"2025-09-01","mins":40,"note":"input system"}
+
+
+Rules
+-----
+- I keep the full state and a change log.
+- I validate commands and confirm each change.
+- Ask SNAPSHOT any time.
+- Keep updates small and clear.
+- If you are unsure, say HELP.
+
+
+Quick start
+-----------
+1) Say: "Use this Memory Bank."
+2) Then try:
+   SET Project.status = in-progress
+   APPEND Tasks.todo += "first milestone"
+   SNAPSHOT
+

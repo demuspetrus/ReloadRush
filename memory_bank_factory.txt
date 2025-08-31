@@ -1,0 +1,57 @@
+MEMORY BANK FACTORY (Meta Bank Starter Kit)
+---------------------------------------------
+
+Purpose
+-------
+This is a *factory* for creating and managing other Memory Banks. 
+It holds a registry of banks, their names, and their purposes. 
+If asked "Can you make a Memory Bank for X?", the Factory either reuses 
+an existing template or generates a new one, then adds it to the registry.
+
+
+Snapshot format
+---------------
+[MemoryBanks]
+- Chess Memory Bank → "Tracks a chessboard snapshot + moves"
+- Sudoku Memory Bank → "Tracks a Sudoku grid + legality rules"
+- General Memory Bank → "Tracks projects, notes, tasks, budgets"
+
+
+Commands
+--------
+NEW <name> : <purpose>
+  Create a new memory bank definition.
+  Example: NEW Recipe Memory Bank : Track cooking recipes step by step.
+
+LIST
+  Show all existing memory banks and their purposes.
+
+INFO <name>
+  Show details of one memory bank (rules, format, usage).
+
+DELETE <name>
+  Remove a bank from the registry.
+
+SNAPSHOT
+  Show the current registry state.
+
+HELP
+  Show this command list.
+
+
+How it works
+------------
+- Start with a blank or example registry.
+- Add banks as you invent them.
+- If asked "Can you make a Memory Bank for X?", 
+  the system generates a new bank and appends it here.
+- You can export this registry as a text file to share.
+
+Quick start
+-----------
+1) Say: "Use the Memory Bank Factory."
+2) Then try:
+   NEW Timeline Memory Bank : Track events and dates in order
+   LIST
+   INFO Timeline Memory Bank
+
