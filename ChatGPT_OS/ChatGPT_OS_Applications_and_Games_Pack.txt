@@ -1,0 +1,315 @@
+CHATGPT OS APPLICATIONS + GAMES PACK
+====================================
+
+Purpose
+-------
+This single text file bundles **applications** (utilities) and **games** for ChatGPT OS.
+Use it with the OS Kernel so you can create a bank, switch to it, and then work with any app or game.
+
+How to use
+----------
+1) Start a fresh chat.
+2) Upload: chatgpt_os_kernel.txt
+3) Say: Use ChatGPT OS
+4) Create and activate a bank, e.g.:
+   NEWBANK Work : Utilities for projects
+   SWITCH Work
+5) Upload this Applications+Games pack (or paste the section you want).
+6) In your active bank, follow the commands in the app/game section you want.
+7) Ask SNAPSHOT any time. Use CHECKPOINT/REVERT before big edits.
+
+App Index
+---------
+- NotesBank
+- TodoBank
+- BudgetBank
+- StudyLogBank
+- Sudoku Game
+- Memory Card Game
+- Checkers Game
+- Tic-Tac-Toe Game
+- Connect Four Game
+- Text Adventure Game
+
+
+----- BEGIN: NotesBank -----
+
+NOTES BANK
+----------
+Snapshot
+[Notes]
+entries = []       # list of {title, text, date?}
+
+Commands
+- ADDNOTE "<title>" : <<
+  multi-line text
+  >>
+- EDITNOTE <index> : <<
+  new text
+  >>
+- DELNOTE <index>
+- LISTNOTES            (titles with indices)
+- SNAPSHOT
+
+Examples
+ADDNOTE "Draft intro" : <<
+Why Memory Banks matter.
+Keep updates small.
+>>
+LISTNOTES
+EDITNOTE 0 : <<
+Revised intro.
+Add examples.
+>>
+DELNOTE 0
+
+----- END: NotesBank -----
+
+
+----- BEGIN: TodoBank -----
+
+TODO BANK
+---------
+Snapshot
+[Todo]
+todo = []          # tasks not started
+doing = []
+done = []
+
+Commands
+- ADD "<task>"                (adds to todo)
+- START "<task>"              (moves from todo to doing)
+- FINISH "<task>"             (moves from doing to done)
+- MOVE <from> -> <to> : "<task>"
+- LIST                        (show all three columns)
+- SNAPSHOT
+
+Examples
+ADD "Write README"
+START "Write README"
+FINISH "Write README"
+MOVE todo -> doing : "Prepare figures"
+
+----- END: TodoBank -----
+
+
+----- BEGIN: BudgetBank -----
+
+BUDGET BANK
+-----------
+Snapshot
+[Budget]
+month = ""
+items = []      # list of {name, eur}
+
+Commands
+- SETMONTH "YYYY-MM"
+- ADDITEM {"name":"books","eur":18}
+- DELITEM <index>
+- TOTAL
+- LIST
+- SNAPSHOT
+
+Examples
+SETMONTH "2025-09"
+ADDITEM {"name":"coffee","eur":3}
+ADDITEM {"name":"books","eur":18}
+TOTAL
+LIST
+
+----- END: BudgetBank -----
+
+
+----- BEGIN: StudyLogBank -----
+
+STUDY LOG BANK
+--------------
+Snapshot
+[Study]
+topic = ""
+sessions = []    # list of {date, mins, note}
+
+Commands
+- SETTOPIC "Unity basics"
+- LOG {"date":"2025-09-01","mins":40,"note":"input system"}
+- TOTALMINS
+- LIST
+- SNAPSHOT
+
+Examples
+SETTOPIC "Brilliant mathematics"
+LOG {"date":"2025-09-01","mins":30,"note":"combinatorics"}
+TOTALMINS
+LIST
+
+----- END: StudyLogBank -----
+
+
+----- BEGIN: Sudoku Game -----
+
+SUDOKU SANDBOX STARTER
+----------------------
+Snapshot Grid ('.' = empty). Rows 1–9, Cols 1–9.
+
+1 | . . . | 2 . . | . . .
+2 | . . . | . . . | 6 . .
+3 | . . . | . 7 . | . . 1
+  |-------+-------+------
+4 | . . 7 | . . . | . 3 .
+5 | . 6 . | . . . | . 8 .
+6 | . 1 . | . . . | 4 . .
+  |-------+-------+------
+7 | 4 . . | . 3 . | . . .
+8 | . . 5 | . . . | . . .
+9 | . . . | . . 9 | . . .
+
+Commands
+- Set:   R#C#=d      (e.g., R1C4=2)
+- Clear: R#C#=.
+- Notes: R#C#?[list] (optional)
+- Show:  SNAPSHOT
+Rules: No duplicates in any row, column, or 3×3 box.
+
+----- END: Sudoku Game -----
+
+
+----- BEGIN: Memory Card Game -----
+
+MEMORY CARD GAME BANK (Concentration)
+------------------------------------
+Snapshot (X = facedown). 4x4 default:
+Row1: X X X X
+Row2: X X X X
+Row3: X X X X
+Row4: X X X X
+
+Commands
+- FLIP R#C#           (reveal one card)
+- PAIR R#C#,R#C#      (confirm a matching pair; stays revealed)
+- SNAPSHOT            (show board)
+- RESET               (reshuffle to all X)
+
+Rules
+- At most two cards revealed at once.
+- If two revealed don't match, they flip back to X on next move.
+- Game ends when all pairs are matched.
+
+----- END: Memory Card Game -----
+
+
+----- BEGIN: Checkers Game -----
+
+CHECKERS SANDBOX STARTER (English draughts)
+-------------------------------------------
+Board (rows 8→1 for Black to White). 'b' black men, 'w' white men, '.' empty.
+Only dark squares used; coordinates like B6->A5.
+
+   a b c d e f g h
+8: . b . b . b . b
+7: b . b . b . b .
+6: . b . b . b . b
+5: . . . . . . . .
+4: . . . . . . . .
+3: w . w . w . w .
+2: . w . w . w . w
+1: w . w . w . w .
+
+Commands
+- Move:    B6->A5
+- Capture: C5xE3 (multi: C5xE3xG1)
+- Crown:   auto when a man reaches back rank (becomes king 'W'/'B')
+- Show:    SNAPSHOT
+
+Rules
+- Moves diagonally on dark squares.
+- Captures are mandatory if available.
+- Kings move and capture both directions.
+
+----- END: Checkers Game -----
+
+
+----- BEGIN: Tic-Tac-Toe Game -----
+
+TIC-TAC-TOE BANK
+----------------
+Snapshot
+  1 2 3
+A . . .
+B . . .
+C . . .
+
+Commands
+- Play:   A1=X or B3=O
+- Show:   SNAPSHOT
+- Reset:  RESET
+
+Rules
+- X goes first. Alternate moves.
+- Win with 3 in a row (row/col/diag).
+
+----- END: Tic-Tac-Toe Game -----
+
+
+----- BEGIN: Connect Four Game -----
+
+CONNECT FOUR BANK
+-----------------
+Snapshot (6 rows x 7 columns). Bottom fills first.
+Columns: 1..7
+
+Board (top view):
+R1: . . . . . . .
+R2: . . . . . . .
+R3: . . . . . . .
+R4: . . . . . . .
+R5: . . . . . . .
+R6: . . . . . . .
+
+Commands
+- Drop:   DROP 4   (drops a piece in column 4)
+- Show:   SNAPSHOT
+- Reset:  RESET
+
+Rules
+- Two players alternate drops.
+- First to connect four (horizontal/vertical/diagonal) wins.
+
+----- END: Connect Four Game -----
+
+
+----- BEGIN: Text Adventure Game -----
+
+TEXT ADVENTURE BANK (mini)
+--------------------------
+Snapshot
+[Player]
+room = "start"
+inv  = []
+
+[World]
+rooms = {
+  "start": {"desc":"A small room with a door north.","exits":{"N":"hall"}},
+  "hall":  {"desc":"A hallway. A key glints here.","exits":{"S":"start"}}
+}
+items = {"hall":["key"]}
+
+Commands
+- LOOK                 (describe current room)
+- GO <dir>             (N,S,E,W)
+- TAKE <item>          (if item in room)
+- DROP <item>
+- INV                  (list inventory)
+- SNAPSHOT
+
+Rules
+- Moves follow exits listed in the room.
+- Items move between room and inventory.
+
+----- END: Text Adventure Game -----
+
+
+Notes
+-----
+- Keep commands small and explicit.
+- Use the OS Kernel for switching between banks and checkpointing.
+- You can copy any section out to its own file if you prefer standalone apps.

@@ -1,0 +1,136 @@
+UTIL MEMORY BANKS – COMPILATION PACK
+=====================================
+
+Contents:
+  1) General Memory Bank Starter
+  2) Memory Bank Factory (Meta)
+
+How to use:
+  - Upload this single file into a fresh ChatGPT chat.
+  - Say: "Use the Util Memory Banks pack".
+  - Then scroll to the section you want and follow the commands there.
+  - You can copy out a section to a new file if you want it standalone.
+
+----- BEGIN: General Memory Bank Starter -----
+
+GENERAL MEMORY BANK STARTER KIT (for fresh chat sessions)
+---------------------------------------------------------
+
+Goal
+----
+Keep one shared state with simple, logged updates. Works for drafts, tasks,
+research notes, budgets, study logs, and more. Paste this file into a new chat
+and say: "Use this Memory Bank."
+
+
+Snapshot format
+---------------
+Blocks define the current state. Keep it plain text.
+
+[Project]
+title = Example Project
+owner = You
+status = planning
+
+[Tasks]
+todo = ["set scope", "collect sources"]
+doing = []
+done = []
+
+[Notes]
+draft = <<
+This is the working draft.
+Use short lines. Keep edits small.
+>>
+
+
+Chat commands (you type these)
+------------------------------
+SNAPSHOT
+  Show the current state.
+
+LOG
+  Show the change log.
+
+SET <Block.key> = <value>
+  Example: SET Project.status = in-progress
+
+APPEND <Block.key> += <item>
+  Example: APPEND Tasks.todo += "write outline"
+
+MOVE <from_list> -> <to_list> : "<item>"
+  Example: MOVE Tasks.todo -> Tasks.doing : "collect sources"
+
+REPLACE <Block.key> : "old" -> "new"
+  Example: REPLACE Notes.draft : "working" -> "living"
+
+REMOVE <Block.key>
+  Example: REMOVE Project.owner
+
+EDIT <Block.key> = << ... >>
+  Replace a whole text block.
+  Example:
+    EDIT Notes.draft = <<
+    New draft line 1.
+    New draft line 2.
+    >>
+
+CHECKPOINT "<name>"
+  Save a named checkpoint of the whole state.
+
+REVERT "<name>"
+  Go back to a checkpoint.
+
+STAMP
+  Add a timestamped note to the log.
+
+HELP
+  Show this command list.
+
+
+----- END: General Memory Bank Starter -----
+
+----- BEGIN: Memory Bank Factory -----
+
+MEMORY BANK FACTORY (Meta Bank Starter Kit)
+---------------------------------------------
+
+Purpose
+-------
+This is a *factory* for creating and managing other Memory Banks. 
+It holds a registry of banks, their names, and their purposes. 
+If asked "Can you make a Memory Bank for X?", the Factory either reuses 
+an existing template or generates a new one, then adds it to the registry.
+
+
+Snapshot format
+---------------
+[MemoryBanks]
+- Chess Memory Bank → "Tracks a chessboard snapshot + moves"
+- Sudoku Memory Bank → "Tracks a Sudoku grid + legality rules"
+- General Memory Bank → "Tracks projects, notes, tasks, budgets"
+
+
+Commands
+--------
+NEW <name> : <purpose>
+  Create a new memory bank definition.
+  Example: NEW Recipe Memory Bank : Track cooking recipes step by step.
+
+LIST
+  Show all existing memory banks and their purposes.
+
+INFO <name>
+  Show details of one memory bank (rules, format, usage).
+
+DELETE <name>
+  Remove a bank from the registry.
+
+SNAPSHOT
+  Show the current registry state.
+
+HELP
+  Show this command list.
+
+
+----- END: Memory Bank Factory -----
