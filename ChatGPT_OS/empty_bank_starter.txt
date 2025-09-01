@@ -1,0 +1,42 @@
+EMPTY BANK STARTER
+-------------------
+A minimal Memory Bank you can adapt to anything.
+
+[State]
+# put your keys here, e.g.:
+title = ""
+items = []
+notes = ""
+
+Commands
+--------
+SET <key> = <value>
+  Example: SET title = "My Project"
+
+APPEND <key> += <item>
+  Example: APPEND items += "first task"
+
+REPLACE <key> : "old" -> "new"
+  Example: REPLACE notes : "todo" -> "plan"
+
+EDIT <key> = << ... >>
+  Replace a whole text block.
+  Example:
+    EDIT notes = <<
+    Day 1: setup
+    Day 2: draft
+    >>
+
+SNAPSHOT
+  Show the current state.
+
+CHECK
+  Request a quick consistency check (optional, loose).
+
+HELP
+  Show these commands.
+
+Notes
+-----
+- Keep updates small and explicit.
+- Use OS Kernel for cross-bank tasks (switching, checkpoints).
