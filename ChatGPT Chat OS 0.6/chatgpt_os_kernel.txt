@@ -1,0 +1,53 @@
+CHATGPT OS KERNEL (v0.6)
+-----------------------------
+Purpose: Manage Memory Banks (create, list, switch, checkpoint).
+
+[Registry]
+active = None
+banks = []          # e.g., [{"name":"Project","purpose":"tasks+notes"}]
+checkpoints = {}    # per-bank labeled snapshots
+
+Commands
+--------
+NEWBANK <name> : <purpose>
+  Create and register a new bank.
+  Example: NEWBANK Project : Track tasks and notes
+
+LIST
+  Show all registered banks.
+
+INFO <name>
+  Show purpose and whether it is active.
+
+SWITCH <name>
+  Set the active bank.
+
+CHECKPOINT "<label>"
+  Save a checkpoint of the active bank.
+  (Kernel stores a copy of the bank's snapshot under this label.)
+
+REVERT "<label>"
+  Restore the active bank to that checkpoint.
+
+SNAPSHOT
+  Show Kernel registry and active bank.
+
+HELP
+  Show these commands.
+
+
+Behavior
+--------
+- Kernel keeps the registry and mediates switching.
+- The **bank file** you load (e.g., empty_bank_starter.txt, General, Sudoku, etc.)
+  defines the **in-bank commands** (SET, APPEND, MOVE, etc.).
+- Kernel commands DO NOT alter the bank’s internal rules; they manage selection and history.
+
+Quick start
+-----------
+1) Say: Use ChatGPT OS.
+2) NEWBANK Project : Track tasks and notes
+3) SWITCH Project
+4) Upload a bank starter (e.g., empty_bank_starter.txt) and use its commands.
+5) CHECKPOINT "v1"
+6) Continue working; REVERT "v1" if needed.
